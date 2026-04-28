@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PurchaseOrder>
+    <Header>
+        <OrderId>PO-1004</OrderId>
+        <Customer>Stark Industries</Customer>
+        <OrderDate>2026-04-15</OrderDate>
+        <Currency>USD</Currency>
+    </Header>
+    <Lines>
+        <Line>
+            <Sku>ARC-REACTOR-MK7</Sku>
+            <Qty>3</Qty>
+            <UnitPrice>15000.00</UnitPrice>
+        </Line>
+        <Line>
+            <Sku>TITANIUM-PLATE</Sku>
+            <Qty>20</Qty>
+            <UnitPrice>875.00</UnitPrice>
+        </Line>
+    </Lines>
+</PurchaseOrder>

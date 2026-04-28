@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PurchaseOrder>
+    <Header>
+        <OrderId>PO-1005</OrderId>
+        <Customer>Wayne Enterprises</Customer>
+        <OrderDate>2026-04-16</OrderDate>
+        <Currency>GBP</Currency>
+    </Header>
+    <Lines>
+        <Line>
+            <Sku>BATARANG</Sku>
+            <Qty>50</Qty>
+            <UnitPrice>120.00</UnitPrice>
+        </Line>
+    </Lines>
+</PurchaseOrder>
