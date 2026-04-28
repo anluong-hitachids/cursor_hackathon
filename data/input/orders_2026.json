@@ -1,0 +1,33 @@
+[
+  {
+    "orderId": "PO-4001",
+    "customer": "ACME Corporation",
+    "orderDate": "2026-04-21",
+    "currency": "EUR",
+    "lines": [
+      { "sku": "GADGET-B",  "qty": 25, "unitPrice": 49.99 },
+      { "sku": "WIDGET-A",  "qty": 40, "unitPrice": 19.99 }
+    ]
+  },
+  {
+    "orderId": "PO-4002",
+    "customer": "Wayne Enterprises",
+    "orderDate": "2026-04-21",
+    "currency": "GBP",
+    "lines": [
+      { "sku": "BATARANG",        "qty": 200, "unitPrice": 120.00 },
+      { "sku": "TITANIUM-PLATE",  "qty": 10,  "unitPrice": 875.00 }
+    ]
+  },
+  {
+    "orderId": "PO-4003",
+    "customer": "Initech Solutions",
+    "orderDate": "2026-04-22",
+    "currency": "EUR",
+    "lines": [
+      { "sku": "STAPLER",  "qty": 30, "unitPrice": 12.50 },
+      { "sku": "TONER-XL", "qty": 12, "unitPrice": 89.99 },
+      { "sku": "PAPER-A4", "qty": 100, "unitPrice": 4.99 }
+    ]
+  }
+]

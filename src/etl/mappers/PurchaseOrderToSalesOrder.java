@@ -1,6 +1,7 @@
 package etl.mappers;
 
 import etl.model.Customer;
+import etl.model.CurrencyRate;
 import etl.model.PurchaseOrder;
 import etl.model.PurchaseOrder.POLine;
 import etl.model.SalesOrder;
@@ -11,12 +12,13 @@ import java.math.RoundingMode;
 import java.util.List;
 
 /**
- * Maps a source {@link PurchaseOrder} into a canonical {@link SalesOrder},
- * enriching the customer fields from the {@link CustomerLookup} reference data
- * and computing per-line and grand totals.
+ * Maps a source {@link PurchaseOrder} into a canonical {@link SalesOrder}.
  *
- * <p>This is the pure-Java replacement for what would otherwise be the main
- * BizTalk / Boomi map.</p>
+ * <ul>
+ *   <li>Enriches customer fields from {@link CustomerLookup}.</li>
+ *   <li>Computes per-line totals and grand total in the order's own currency.</li>
+ *   <li>Computes {@code grandTotalUsd} via {@link CurrencyRateLookup}.</li>
+ * </ul>
  */
 public final class PurchaseOrderToSalesOrder {
 
@@ -24,10 +26,12 @@ public final class PurchaseOrderToSalesOrder {
 
     public static SalesOrder map(PurchaseOrder po,
                                  CustomerLookup customers,
+                                 CurrencyRateLookup currencies,
                                  String batchId,
                                  String processedAt) {
 
-        Customer customer = customers.find(po.customer());
+        Customer     customer = customers.find(po.customer());
+        CurrencyRate rate     = currencies.find(po.currency());
 
         List<SalesItem> items = po.lines().stream()
                 .map(PurchaseOrderToSalesOrder::toSalesItem)
@@ -36,6 +40,10 @@ public final class PurchaseOrderToSalesOrder {
         BigDecimal grandTotal = items.stream()
                 .map(SalesItem::lineTotal)
                 .reduce(BigDecimal.ZERO, BigDecimal::add)
+                .setScale(2, RoundingMode.HALF_UP);
+
+        BigDecimal grandTotalUsd = grandTotal
+                .multiply(rate.rateToUsd())
                 .setScale(2, RoundingMode.HALF_UP);
 
         return new SalesOrder(
@@ -47,9 +55,11 @@ public final class PurchaseOrderToSalesOrder {
                 customer.region(),
                 po.orderDate(),
                 po.currency(),
+                rate.rateToUsd(),
                 items,
                 items.size(),
-                grandTotal);
+                grandTotal,
+                grandTotalUsd);
     }
 
     private static SalesItem toSalesItem(POLine line) {

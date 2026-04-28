@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PurchaseOrder>
+    <Header>
+        <OrderId>PO-1006</OrderId>
+        <Customer>Mystery Buyer Co.</Customer>
+        <OrderDate>2026-04-23</OrderDate>
+        <Currency>XYZ</Currency>
+    </Header>
+    <Lines>
+        <Line>
+            <Sku>UNKNOWN-SKU</Sku>
+            <Qty>-5</Qty>
+            <UnitPrice>10.00</UnitPrice>
+        </Line>
+    </Lines>
+</PurchaseOrder>
