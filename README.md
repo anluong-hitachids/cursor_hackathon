@@ -1,57 +1,65 @@
-# AI Hackathon — Slide deck
+# AI Hackathon — Slide deck (built on the official Cursor Hitachi template)
 
-**Đề tài:** Convert một ETL viết bằng **Java** sang **Python** với sự hỗ trợ của **Cursor AI**.
+**Topic:** Convert a Java ETL project to Python with the help of Cursor AI.
 
-Repo này chứa:
+This deck reuses **`Cursor Hitachi Sprint Day Results .pptx`** so the master/theme,
+fonts (Helvetica Neue), Cursor wordmark and color scheme are kept identical to
+what the event expects. The first two slides match the template’s required
+structure (cover + 4-quadrant project overview); slides 3–9 are the additional
+content slides for **Problem / Impact / Solution / Architecture / Demo / Results
+/ Conclusion**.
 
-| File | Mô tả |
+## Files
+
+| File | Purpose |
 |---|---|
-| `slides_content.md` | Nội dung lý thuyết cho từng slide (Problem, Impact, Solution, Results…). Sửa ở đây nếu bạn muốn đổi câu chữ. |
-| `build_slides.py` | Script Python sinh file `.pptx` 9 slide (16:9) với theme tím‑cam khớp với event. |
-| `requirements.txt` | Phụ thuộc Python (`python-pptx`). |
-| `AI_Hackathon_ETL_Java_to_Python.pptx` | File slide đã build sẵn — mở trực tiếp bằng PowerPoint / Keynote / Google Slides. |
+| `Cursor Hitachi Sprint Day Results .pptx` | The original event template. **Do not delete.** `build_slides.py` opens it as a base. |
+| `build_slides.py` | `python-pptx` script that fills the template’s slides 1–2 and appends 7 new content slides in matching style. |
+| `cursor_logo_dark.png` | The dark Cursor wordmark, extracted from the template, used in the page chrome of the appended slides. |
+| `slides_content.md` | Plain-text source of the slide copy (Problem / Impact / Solution / Results …). Edit here when you want to change wording. |
+| `requirements.txt` | Python dependencies (`python-pptx`). |
+| `AI_Hackathon_ETL_Java_to_Python.pptx` | Pre-built deck — open in PowerPoint / Keynote / Google Slides. |
 
-## Cấu trúc 9 slide
+## Deck structure (9 slides)
 
-1. **Title** — tiêu đề bài thi.
-2. **Agenda** — mục lục.
-3. **Problem** — pain points của ETL Java legacy.
-4. **Impact** — KPI + bảng so sánh trước/sau.
-5. **Solution** — pipeline 5 bước có Cursor làm co‑pilot.
-6. **Architecture** — sơ đồ end‑to‑end + vai trò của Cursor.
-7. **Cursor Usage / Demo** — kịch bản demo 5–7 phút + cách Cursor hỗ trợ.
-8. **Results** — bảng metrics + KPI chính.
-9. **Conclusion & Next Steps** — tóm tắt, roadmap, CTA.
+1. **Cover** *(template TITLE_2)* — “Java ETL → Python — AI-Assisted Migration with Cursor.”
+2. **Cursor Hackathon Project** *(template 4-quadrant)* — Name/Dept, Project Description, Project Outcomes, Key Learnings.
+3. **01 Problem** — six pain-point cards + closing question.
+4. **02 Impact** — four KPI tiles + before/after table + stakeholder bullets.
+5. **03 Solution** — five-step pipeline (Inventory → AI Translation → Auto Test Gen → Validation Harness → Human Review) + Cursor capabilities.
+6. **04 Architecture** — boxes-and-arrows end-to-end flow + Cursor’s role.
+7. **05 Cursor Usage / Demo** — 5–7 minute demo timeline + “How Cursor accelerated build & quality.”
+8. **06 Results** — metrics table + KPI tiles + qualitative wins.
+9. **07 Conclusion** — summary, roadmap, CTA strip.
 
-Mapping với 5 tiêu chí chấm điểm:
+## Mapping to the 5 judging criteria
 
-| Tiêu chí | Slide chính |
+| Criterion | Where it’s shown |
 |---|---|
-| Innovation | 5 (Solution), 6 (Architecture) |
-| Impact | 4 (Impact), 8 (Results) |
-| Feasibility | 5, 6, 8 |
-| Cursor Usage | 7 (Demo), 5, 6 |
-| Demo Quality | 7 (Demo) |
+| Innovation | Slides 5, 6 (pipeline + validation harness pattern) |
+| Impact | Slides 4, 8 (KPIs + measurable benefit) |
+| Feasibility | Slides 5, 6, 8 (architecture, end-to-end metrics) |
+| Cursor Usage | Slides 7, 5, 6 (Agent, custom rules, background agents, multi-file edit) |
+| Demo Quality | Slide 7 (timeline, end-to-end with synthetic data) |
 
-## Build lại file slide
+## Rebuild
 
 ```bash
 pip install -r requirements.txt
 python build_slides.py
+# -> AI_Hackathon_ETL_Java_to_Python.pptx
 ```
 
-Đầu ra: `AI_Hackathon_ETL_Java_to_Python.pptx` (16:9, ~9 slides).
+## Customising
 
-## Tuỳ biến
+- **Name / Department / Team:** edit `fill_overview()` and `fill_cover()` in `build_slides.py`.
+- **Theme colors:** the constants at the top of `build_slides.py` (`INK`, `ORANGE`, `SURFACE`, …) come straight from the template’s `theme1.xml`. Change them only if you want to deviate from the official theme.
+- **Wording:** edit either the slide functions in `build_slides.py` or the master copy in `slides_content.md`.
+- **Add a slide:** write a new `slide_xxx(prs, layout, page, total)` function and call it from `build()`. Bump `total` accordingly.
 
-- **Đổi tên / team / event:** sửa hàm `slide_title()` trong `build_slides.py`.
-- **Đổi màu / theme:** chỉnh các hằng `PRIMARY`, `ACCENT`, `BG`, `INK`… ở đầu file.
-- **Đổi nội dung slide:** sửa text trong từng hàm `slide_*()` (hoặc cập nhật `slides_content.md` rồi viết lại các hàm tương ứng).
-- **Thêm slide:** viết một hàm `slide_xxx(prs, total)` mới và gọi trong `build()`. Nhớ tăng biến `total`.
+## Presenting tips
 
-## Gợi ý khi present
-
-- Slide **Problem** → kể 1 câu chuyện thực tế (đã từng debug job 3 ngày, deploy lại JAR…).
-- Slide **Solution** → nhấn vào *Cursor Agent + custom rules + background agents* (đây là điểm “smart automation”).
-- Slide **Demo** → nên chuẩn bị video screen‑record dự phòng phòng khi mạng chậm.
-- Slide **Results** → đọc to các con số đậm (cam) — đây là điểm “measurable benefit”.
+- Slide 3 (Problem): tell a real war story (e.g. spent 3 days debugging a Spring Batch chunk).
+- Slide 5 (Solution): emphasise *Cursor Agent + custom rules + background agents* — that is the “smart automation” story.
+- Slide 7 (Demo): keep a screen recording as a fallback in case the live demo stalls.
+- Slide 8 (Results): read the bold numbers aloud — they map to the “measurable benefit” judging criterion.
