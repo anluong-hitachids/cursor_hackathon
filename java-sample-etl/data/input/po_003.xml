@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PurchaseOrder>
+    <Header>
+        <OrderId>PO-1003</OrderId>
+        <Customer>Initech Solutions</Customer>
+        <OrderDate>2026-04-14</OrderDate>
+        <Currency>EUR</Currency>
+    </Header>
+    <Lines>
+        <Line>
+            <Sku>PAPER-A4</Sku>
+            <Qty>50</Qty>
+            <UnitPrice>4.99</UnitPrice>
+        </Line>
+        <Line>
+            <Sku>PEN-BLUE</Sku>
+            <Qty>200</Qty>
+            <UnitPrice>0.85</UnitPrice>
+        </Line>
+        <Line>
+            <Sku>STAPLER</Sku>
+            <Qty>15</Qty>
+            <UnitPrice>12.50</UnitPrice>
+        </Line>
+        <Line>
+            <Sku>TONER-XL</Sku>
+            <Qty>8</Qty>
+            <UnitPrice>89.99</UnitPrice>
+        </Line>
+    </Lines>
+</PurchaseOrder>

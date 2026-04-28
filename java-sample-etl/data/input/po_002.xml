@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PurchaseOrder>
+    <Header>
+        <OrderId>PO-1002</OrderId>
+        <Customer>Globex Industries</Customer>
+        <OrderDate>2026-04-13</OrderDate>
+        <Currency>USD</Currency>
+    </Header>
+    <Lines>
+        <Line>
+            <Sku>SERVER-RACK</Sku>
+            <Qty>4</Qty>
+            <UnitPrice>2499.00</UnitPrice>
+        </Line>
+        <Line>
+            <Sku>SWITCH-48P</Sku>
+            <Qty>2</Qty>
+            <UnitPrice>1899.50</UnitPrice>
+        </Line>
+    </Lines>
+</PurchaseOrder>

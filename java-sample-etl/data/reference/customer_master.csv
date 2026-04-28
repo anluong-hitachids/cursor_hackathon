@@ -1,0 +1,10 @@
+CustomerName,CustomerCode,PaymentTermsDays,TaxRate,Region
+ACME Corporation,CUST001,30,0.085,US-EAST
+Globex Industries,CUST002,30,0.085,US-WEST
+Initech Solutions,CUST003,45,0.20,EU-DE
+Stark Industries,CUST004,15,0.085,US-WEST
+Wayne Enterprises,CUST005,30,0.20,UK
+Cyberdyne Systems,CUST006,30,0.085,US-WEST
+Umbrella Corp,CUST007,60,0.085,US-EAST
+Tyrell Corp,CUST008,30,0.085,US-WEST
+Genco Trading,CUST009,30,0.085,US-EAST
